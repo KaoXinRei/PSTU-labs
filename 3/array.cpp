@@ -32,7 +32,7 @@ int main()
 	cin >> k;
 	cout << "Element: ";
 	cin >> elem;
-	n++;
+	n++; 
 	for (int i = k; i < n; i++)
 	{
 		int tmp = a[i];
