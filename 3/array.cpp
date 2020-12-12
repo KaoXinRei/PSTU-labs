@@ -18,24 +18,24 @@ int main()
 	}
 	cout << endl << "Element number to delete: ";
 	cin >> m;
-	n--;
-	for (int i = m; i <= n; i++)
+	for (int i = m; i < n; i++)
 	{
 		a[i] = a[i + 1];
 	}
+	n--;
 	for (int i = 0; i < n; i++)
 	{
 		cout << a[i] << ' ';
 	}
-	n++;
 	cout << endl << "Element number to insert: ";
-	int k, elem, tmp;
+	int k, elem;
 	cin >> k;
 	cout << "Element: ";
 	cin >> elem;
-	for (int i = k; i <= n; i++)
+	n++;
+	for (int i = k; i < n; i++)
 	{
-		tmp = a[i];
+		int tmp = a[i];
 		a[i] = elem;
 		elem = tmp;
 	}
@@ -44,7 +44,6 @@ int main()
 		cout << a[i] << ' ';
 	}
 	cout << endl;
-	//четные в начало, нечетные - в конец
 	int even;
 	for (int i = 0; i < n; i++)
 	{
@@ -62,11 +61,12 @@ int main()
 			{
 				break;
 			}
-			tmp = a[i];
+			int tmp = a[i];
 			a[i] = a[even];
 			a[even] = tmp;
 		}
 	}
+	cout << "Array after putting even numbers at the beginning and odd at the end: ";
 	for (int i = 0; i < n; i++)
 	{
 		cout << a[i] << ' ';
@@ -76,10 +76,10 @@ int main()
 	{
 		mean += a[i];
 	}
-	mean /= n; //не учитываю, что может быть нецелым, потому что он тогда вообще почти никогда не найдет
+	mean /= n;
 	for (int i = 0; i < n; i++)
 	{
-		ncompare += 1;
+		ncompare++;
 		if (a[i] == mean)
 		{
 			nmean = i;
@@ -89,7 +89,7 @@ int main()
 	cout << endl;
 	if (nmean == -1)
 	{
-		cout << "No mean element";
+		cout << "No mean element found";
 	}
 	else
 	{
@@ -98,7 +98,7 @@ int main()
 		cout << "It took " << ncompare << " comparisons to find it";
 	}
 	cout << endl;
-	//сортировка простым включением
+
 	for (int i = 0; i < n; i++)
 	{
 		int j = i - 1, elem = a[i];
@@ -109,6 +109,7 @@ int main()
 		}
 		a[j + 1] = elem;
 	}
+	cout << "Array after sorting: ";
 	for (int i = 0; i < n; i++)
 	{
 		cout << a[i] << ' ';
@@ -117,7 +118,7 @@ int main()
 	ncompare = 0;
 	for (int i = 0; i < n; i++)
 	{
-		ncompare += 1;
+		ncompare++;
 		if (a[i] == mean)
 		{
 			nmean = i;
@@ -126,7 +127,7 @@ int main()
 	}
 	if (nmean == -1)
 	{
-		cout << "No mean element";
+		cout << "No mean element found";
 	}
 	else
 	{
