@@ -295,6 +295,7 @@ int main() {
                 cout << deleted.back().first.name << " returned to position " << deleted.back().second << endl;
                 people.insert(people.begin() + deleted.back().second, deleted.back().first);
                 sorted_people.push_back(make_pair(get_value(deleted.back().first.name), deleted.back().first));
+                sort(sorted_people.begin(), sorted_people.end(), compare);
                 deleted.pop_back();
             }
         }
