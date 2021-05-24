@@ -15,7 +15,6 @@ public:
     city(const city&);
     QString name;
     friend bool operator== (const city&, const city&);
-    void set_number(QString);
     void selected_color();
     void unselected_color();
     friend std::fstream &operator>>(std::fstream &fin, city &p);
@@ -24,7 +23,6 @@ public:
 private:
     int pos_x;
     int pos_y;
-    QString number;
     QColor color;
 
 protected:

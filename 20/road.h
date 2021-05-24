@@ -8,11 +8,10 @@
 class road : public QGraphicsItem
 {
 public:
-    road(city*, city*, double, QGraphicsItem* parent = nullptr);
+    road(city*, city*, QGraphicsItem* parent = nullptr);
     road(const road&);
     city* first_city;
     city* second_city;
-    double length;
     friend bool operator== (const road&, const road&);
     void selected_color();
     void unselected_color();

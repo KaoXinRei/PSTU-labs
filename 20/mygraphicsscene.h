@@ -15,7 +15,6 @@ class myGraphicsScene :  public QGraphicsScene
 public:
     explicit myGraphicsScene(QObject *parent = 0);
     bool choosing_cities;
-    void recheck_selected();
 
 public slots:
 

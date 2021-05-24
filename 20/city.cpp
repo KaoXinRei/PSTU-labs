@@ -5,10 +5,9 @@ city::city(QGraphicsItem* parent): QGraphicsItem(parent) {
     pos_x = 0;
     pos_y = 0;
     color = Qt::blue;
-    setFlag(QGraphicsItem::ItemIsMovable);
     setFlag(QGraphicsItem::ItemIsFocusable);
     setFlag(QGraphicsItem::ItemIsSelectable);
-    number = "";
+    moveBy(pos_x,pos_y);
 }
 
 city::city(QString n, int x, int y, QGraphicsItem* parent) : QGraphicsItem(parent) {
@@ -16,10 +15,9 @@ city::city(QString n, int x, int y, QGraphicsItem* parent) : QGraphicsItem(paren
     pos_x = x;
     pos_y = y;
     color = Qt::blue;
-    setFlag(QGraphicsItem::ItemIsMovable);
     setFlag(QGraphicsItem::ItemIsFocusable);
     setFlag(QGraphicsItem::ItemIsSelectable);
-    number = "";
+    moveBy(pos_x,pos_y);
 }
 
 city::city(const city& c){
@@ -27,10 +25,9 @@ city::city(const city& c){
     pos_x = c.pos_x;
     pos_y = c.pos_y;
     color = Qt::blue;
-    setFlag(QGraphicsItem::ItemIsMovable);
     setFlag(QGraphicsItem::ItemIsFocusable);
     setFlag(QGraphicsItem::ItemIsSelectable);
-    number = "";
+    moveBy(pos_x,pos_y);
 }
 
 QRectF city::boundingRect() const {
@@ -40,18 +37,12 @@ QRectF city::boundingRect() const {
 void city::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget) {
     painter->setRenderHints(QPainter::Antialiasing);
     painter->setBrush(color);
-    //painter->setPen(Qt::lightGray);
     painter->drawEllipse(0, 0, 50, 50);
     QFontMetrics fm(painter->font());
     int tw = fm.width(name);
     painter->drawText(25 - tw/2, 30, name);
-    tw = fm.width(number);
-    painter->drawText(25 - tw/2, -5, number);
 }
 
-void city::set_number(QString n) {
-    number = n;
-}
 
 void city::selected_color() {
     color = Qt::red;

@@ -8,8 +8,8 @@
 #include "road.h"
 #include "mygraphicsscene.h"
 #include <QKeyEvent>
-#include "solution.h"
 #include <QDoubleValidator>
+#include "balanced_tree.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -23,29 +23,21 @@ public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
 
-private slots:
-    void add_city();
-    void start_road_creation1();
-    void start_road_creation2();
-    void choose_city(city*);
-    void showSolution();
-    void city_numeration(std::vector<int>);
-    void process_selection(QGraphicsItem*);
-    void save_to_file();
-    void open_file();
+private:
+    city* add_node(balanced_tree, int, int);
+    QString double_to_str(double);
 
-protected:
-    void keyPressEvent(QKeyEvent *e);
+private slots:
+    void create_b_tree();
+    void get_max();
+    void clear();
 
 private:
     Ui::MainWindow *ui;
     myGraphicsScene* scene;
     std::vector<city*> cities;
     std::vector<road*> roads;
-    city* chosen_city;
-    solution* dialog;
-    QDoubleValidator m_doubleValidator;
-    bool double_sided;
+    std::vector<balanced_tree> tree;
 
 };
 #endif // MAINWINDOW_H
